@@ -32,6 +32,21 @@ public class PalindromeTests
 
         bool result = palindrome.IsPalindrome(word);
 
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void ShouldFindPalindromeAfterNotFindingPalindrome()
+    {
+        string palindromeWord = "";
+        string notPalindromeWord = "abbc";
+
+        Palindrome palindrome = new Palindrome();
+
+        bool result = palindrome.IsPalindrome(notPalindromeWord);
+        Assert.False(result);
+
+        result = palindrome.IsPalindrome(palindromeWord);
         Assert.True(result);
     }
 }
