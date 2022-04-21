@@ -14,25 +14,40 @@ public class PalindromeTests
     public void ShouldBePalindrome(string word)
     {
         Palindrome palindrome = new ();
-
         bool result = palindrome.IsPalindrome(word);
-
-        Assert.True(result);
+        Assert.True(result, $"Failed for '{word}'");
     }
 
     [Theory]
     [InlineData("Aba")]
     [InlineData("aBba")]
+    public void ShouldBeCaseInsensitive(string word)
+    {
+        Palindrome palindrome = new ();
+        bool result = palindrome.IsPalindrome(word);
+        Assert.True(result, $"Failed for '{word}'");
+    }
+
+    [Theory]
+    // [InlineData(")a!b@c#d$d/c]b&a^")]
+    [InlineData("  a b   b        a      ")]
+    public void ShouldIgnoreNonAlphaNumeric(string word)
+    {
+        Palindrome palindrome = new ();
+        bool result = palindrome.IsPalindrome(word);
+        Assert.True(result, $"Failed for '{word}'");
+    }
+
+    [Theory]
+    [InlineData("abc")]
     [InlineData("abbc")]
     [InlineData("abca")]
     [InlineData("abcca")]
     public void ShouldNotBePalindrome(string word)
     {
         Palindrome palindrome = new ();
-
         bool result = palindrome.IsPalindrome(word);
-
-        Assert.False(result);
+        Assert.False(result, $"Failed for '{word}'");
     }
 
     [Fact]
