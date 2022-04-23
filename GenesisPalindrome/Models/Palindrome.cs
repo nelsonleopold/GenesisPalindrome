@@ -59,7 +59,7 @@ namespace GenesisPalindrome.Models
         public string StringPrep(string UserWord)
         {
             // use regex to remove all non alphanumeric characters
-            Regex rgx = new Regex("[^a-zA-Z0-9 -]");
+            Regex rgx = new Regex("[^a-zA-Z0-9]+");
             UserWord = rgx.Replace(UserWord, "");
             UserWord = UserWord.ToLower();
 
