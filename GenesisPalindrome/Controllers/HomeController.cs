@@ -35,8 +35,6 @@ namespace GenesisPalindrome.Controllers
         public IActionResult Palindrome(Palindrome palindrome, string UserWord)
         {
             // reverse the word
-            // string reversedWord = palindrome.ReverseWord(UserWord);
-
             palindrome.IsPalindrome(UserWord);
             return View(palindrome);
         }

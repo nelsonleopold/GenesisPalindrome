@@ -6,7 +6,7 @@ namespace GenesisPalindrome.Models
     public class Palindrome
     {
         public bool isPalindrome;
-        [Required(ErrorMessage = "If you want me to check if a word is a palindrome, then you must enter a word! :)")]
+        [Required()]
         public string? UserWord { get; set; }
         public string? ReversedWord { get; set; }
 
@@ -32,6 +32,7 @@ namespace GenesisPalindrome.Models
             // check UserWord for empty string
             if (string.IsNullOrEmpty(UserWord))
             {
+                isPalindrome = true;
                 return isPalindrome;
             }
 
