@@ -1,10 +1,12 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace GenesisPalindrome.Models
 {
     public class Palindrome
     {
         public bool isPalindrome;
+        [Required(ErrorMessage = "If you want me to check if a word is a palindrome, then you must enter a word! :)")]
         public string? UserWord { get; set; }
         public string? ReversedWord { get; set; }
 
@@ -27,6 +29,19 @@ namespace GenesisPalindrome.Models
 
         public bool IsPalindrome(string UserWord)
         {
+            // check UserWord for empty string
+            if (string.IsNullOrEmpty(UserWord))
+            {
+                return isPalindrome;
+            }
+
+            // check UserWord for single char - automatic palindrome
+            if (UserWord.Length == 1)
+            {
+                isPalindrome = true;
+                return isPalindrome;
+            }
+
             // prepare string before reversing and checking
             // whether palindrome
             UserWord = StringPrep(UserWord);
